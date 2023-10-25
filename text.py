@@ -28,7 +28,7 @@ cleaned_text = re.sub(r'\.{2,}', '', text_from_pages_2_3)
 # print(cleaned_text)
 # Функция для фильтрации текста по заданному шаблону
 def filter_by_pattern(text):
-    return "\n".join([line for line in text.split("\n") if re.search(r'\d', line)])
+    return "\n".join([line for line in text.split("\n") if re.match(r'^\d+\.', line)])
 
 filtered_text = filter_by_pattern(cleaned_text)
 print(filtered_text)
