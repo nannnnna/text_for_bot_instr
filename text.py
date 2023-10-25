@@ -21,9 +21,12 @@ def convert_pdf_to_text_range(file_path, start_page, end_page):
             text += reader.pages[page].extract_text()
     return text
 
-# Получение текста со страниц 2 и 3
 text_from_pages_2_3 = convert_pdf_to_text_range("inst.pdf", 2, 3)
-print(text_from_pages_2_3)
+
+# Удаление последовательности точек
+cleaned_text = re.sub(r'\.{2,}', '', text_from_pages_2_3)
+
+print(cleaned_text)
 # for page_num, text in enumerate(texts_from_pdf, 1): вывод всего текста с допоплнительной нумерацией страниц
 #     print(f"------ Page {page_num} ------")
 #     print(text)
